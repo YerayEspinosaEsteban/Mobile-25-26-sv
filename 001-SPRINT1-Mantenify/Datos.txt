@@ -1,0 +1,58 @@
+-- USUARIOS
+INSERT INTO usuarios (nombre, correo, avatar_url) VALUES
+('Juan Pérez', 'juan.perez@example.com', 'https://pics.com/u1.png'),
+('María López', 'maria.lopez@example.com', 'https://pics.com/u2.png'),
+('Carlos García', 'carlos.garcia@example.com', 'https://pics.com/u3.png'),
+('Ana Fernández', 'ana.fernandez@example.com', 'https://pics.com/u4.png'),
+('Luis Martín', 'luis.martin@example.com', 'https://pics.com/u5.png');
+
+-- CATEGORÍAS
+INSERT INTO categorias (clave, nombre) VALUES
+('fontaneria', 'Fontanería'),
+('electricidad', 'Electricidad'),
+('pintura', 'Pintura'),
+('carpinteria', 'Carpintería'),
+('limpieza', 'Limpieza'),
+('jardineria', 'Jardinería'),
+('cerrajeria', 'Cerrajería'),
+('albanileria', 'Albañilería');
+
+-- PUBLICACIONES
+INSERT INTO publicaciones (titulo, descripcion, precio_base, ciudad, imagen_clave, video_url, usuario_id) VALUES
+('Reparación de fuga de agua', 'Reparación rápida de fugas y tuberías dañadas.', 40.00, 'Madrid', 'img/agua1.png', 'https://youtube.com/watch?v=abc001', 1),
+('Instalación de enchufes', 'Instalación profesional de enchufes y tomas eléctricas.', 35.00, 'Barcelona', 'img/electric1.png', 'https://youtube.com/watch?v=abc002', 2),
+('Pintado de habitación', 'Servicio de pintura para habitaciones y salones.', 80.00, 'Valencia', 'img/paint1.png', 'https://youtube.com/watch?v=abc003', 3),
+('Montaje de mueble IKEA', 'Montaje rápido de muebles de todo tipo.', 25.00, 'Sevilla', 'img/ikea1.png', 'https://youtube.com/watch?v=abc004', 1),
+('Limpieza profunda de cocina', 'Limpieza completa de superficies, electrodomésticos y suelos.', 50.00, 'Madrid', 'img/clean1.png', 'https://youtube.com/watch?v=abc005', 4),
+('Reparación de enchufe quemado', 'Arreglo profesional de cortocircuitos y enchufes quemados.', 45.00, 'Bilbao', 'img/electric2.png', 'https://youtube.com/watch?v=abc006', 2),
+('Corte de césped', 'Servicio profesional de cuidado de jardín.', 30.00, 'Zaragoza', 'img/jardin1.png', 'https://youtube.com/watch?v=abc007', 5),
+('Cambio de cerradura', 'Cerrajero urgente para apertura y cambio de cerraduras.', 60.00, 'Madrid', 'img/lock1.png', 'https://youtube.com/watch?v=abc008', 4),
+('Reforma de baño', 'Albañilería completa para reformas de baño.', 300.00, 'Barcelona', 'img/bano1.png', 'https://youtube.com/watch?v=abc009', 3),
+('Barnizado de puerta', 'Restauración y barnizado profesional.', 70.00, 'Sevilla', 'img/wood1.png', 'https://youtube.com/watch?v=abc010', 1);
+
+-- PUBLICACIONES_CATEGORIAS (N:M)
+INSERT INTO publicaciones_categorias (publicacion_id, categoria_id) VALUES
+(1, 1),
+(1, 5),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 2),
+(7, 6),
+(8, 7),
+(9, 8),
+(10, 4);
+
+-- FAVORITOS (N:M)
+INSERT INTO favoritos (usuario_id, publicacion_id) VALUES
+(1, 2),
+(1, 5),
+(2, 1),
+(2, 4),
+(3, 3),
+(3, 8),
+(4, 6),
+(4, 1),
+(5, 7),
+(5, 10);

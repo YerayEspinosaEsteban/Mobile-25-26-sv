@@ -1,0 +1,41 @@
+CREATE TABLE usuarios (
+    id              SERIAL PRIMARY KEY,
+    nombre          VARCHAR(80) NOT NULL,
+    correo          VARCHAR(120) NOT NULL UNIQUE,
+    avatar_url      TEXT,
+    creado_en       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE categorias (
+    id      SERIAL PRIMARY KEY,
+    clave   VARCHAR(50) NOT NULL UNIQUE,   -- "fontaneria", "electricidad"
+    nombre  VARCHAR(80) NOT NULL           -- "Fontanería", "Electricidad"
+);
+
+CREATE TABLE publicaciones (
+    id              SERIAL PRIMARY KEY,
+    titulo          VARCHAR(120) NOT NULL,
+    descripcion     TEXT,
+    precio_base     NUMERIC(10,2) NOT NULL DEFAULT 0,
+    ciudad          VARCHAR(80),
+    imagen_clave    TEXT NOT NULL,         -- clave en S3
+    video_url       TEXT NOT NULL,         -- URL de YouTube válida
+    usuario_id      INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    creado_en       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE publicaciones_categorias (
+    publicacion_id   INTEGER NOT NULL REFERENCES publicaciones(id) ON DELETE CASCADE,
+    categoria_id     INTEGER NOT NULL REFERENCES categorias(id) ON DELETE CASCADE,
+    PRIMARY KEY (publicacion_id, categoria_id)
+);
+
+CREATE TABLE favoritos (
+    id             SERIAL PRIMARY KEY,
+    usuario_id     INTEGER NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    publicacion_id INTEGER NOT NULL REFERENCES publicaciones(id) ON DELETE CASCADE,
+    creado_en      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT unico_usuario_publicacion UNIQUE (usuario_id, publicacion_id)
+);

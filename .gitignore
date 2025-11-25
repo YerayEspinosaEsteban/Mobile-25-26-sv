@@ -19,6 +19,9 @@ build/
 #   ENVIRONMENT FILES
 # ===========================
 .env
+.stg.env
+.prod.env
+.env.test
 .env.*.local
 .env.local
 expo-env.d.ts
