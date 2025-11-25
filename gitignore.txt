@@ -1,0 +1,73 @@
+# ===========================
+#   NODE & NPM
+# ===========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+# ===========================
+#   DIST / BUILD
+# ===========================
+dist/
+build/
+.tmp/
+
+# ===========================
+#   ENVIRONMENT FILES
+# ===========================
+.env
+.env.*.local
+.env.local
+expo-env.d.ts
+
+# ===========================
+#   LOGS
+# ===========================
+logs/
+*.log
+*.log.*
+
+# ===========================
+#   CACHE
+# ===========================
+.cache/
+.expo/
+.expo-shared/
+.expo/web-build/
+.expo-old/
+
+# Metro bundler
+metro-cache/
+.gradle/
+
+# ===========================
+#   OS FILES
+# ===========================
+.DS_Store
+Thumbs.db
+
+# ===========================
+#   TEST & COVERAGE
+# ===========================
+coverage/
+.nyc_output/
+
+# ===========================
+#   TYPESCRIPT
+# ===========================
+*.tsbuildinfo
+
+# ===========================
+#   EDITOR CONFIG
+# ===========================
+.vscode/
+.idea/
+
+# ===========================
+#   ANDROID / IOS
+# ===========================
+android/
+ios/
